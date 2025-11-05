@@ -1,0 +1,3 @@
+fault_model =   # could be SAF, bridging fault, coupling fault
+weight_size =   # 
+algorithm =     #don't know yet
