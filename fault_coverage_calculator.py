@@ -1,1 +1,0 @@
-# fault coverage calculator
