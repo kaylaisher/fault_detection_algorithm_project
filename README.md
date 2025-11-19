@@ -7,7 +7,7 @@
 
 ## How to use
 ```
-python3 run_simulator.py
+python3 run_simulation.py
 ```
 
 
