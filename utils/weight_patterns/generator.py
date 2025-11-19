@@ -1,4 +1,3 @@
-# utils/weight_patterns/generator.py
 
 from .base_patterns import all_zero, all_one
 from .one_hot_patterns import one_hot

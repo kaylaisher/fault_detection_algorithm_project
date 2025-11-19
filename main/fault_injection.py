@@ -46,4 +46,46 @@ def inject_fault(in_bits, weight_bits, fault, row_id=1, verbose=False):
         if verbose:
             print(f"[BRIDGE] {i}<->{j} type={bt} | {a,b}→{a_faulty,b_faulty}")
 
+    elif fault.fault_type == "COUPLING":
+
+        # Fault object fields:
+        # fault.aggr_row      -> 1 or 2 (aggressor)
+        # fault.aggr_bit      -> which bit
+        # fault.victim_bit    -> victim bit index (case 1..N)
+        # fault.transition    -> "0->1" or "1->0"
+        # fault.prev_bits     -> previous R1[] or R2[] (list)
+        # fault.curr_bits     -> current R1[] or R2[] (list)
+
+        ag = fault.aggr_row
+        ab = fault.aggr_bit
+        vb = fault.victim_bit
+
+        prev = fault.prev_bits[ab]
+        curr = fault.curr_bits[ab]
+
+        # Check if the aggressor matches the transition condition
+        if fault.transition == "0->1" and prev == 0 and curr == 1:
+            triggered = True
+        elif fault.transition == "1->0" and prev == 1 and curr == 0:
+            triggered = True
+        else:
+            triggered = False
+
+        if triggered:
+
+            # If ROW 1 triggered → affect ROW 2
+            if ag == 1 and row_id == 2:
+                old = w_faulty[vb]
+                w_faulty[vb] = 1 - w_faulty[vb]   # invert
+                if verbose:
+                    print(f"[COUPLING R1 {fault.transition}] R2[{vb}]: {old}→{w_faulty[vb]}")
+
+            # If ROW 2 triggered → affect ROW 1
+            elif ag == 2 and row_id == 1:
+                old = w_faulty[vb]
+                w_faulty[vb] = 1 - w_faulty[vb]
+                if verbose:
+                    print(f"[COUPLING R2 {fault.transition}] R1[{vb}]: {old}→{w_faulty[vb]}")
+
+
     return in_faulty, w_faulty

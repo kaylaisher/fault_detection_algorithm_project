@@ -19,3 +19,5 @@ BRIDGE_TYPES_ACTIVE = list(range(8))  # Lets you limit specific bridge types for
 NUM_ROW = 2           # Keeps future scalability in mind
 
 RANDOM_SEED = None
+
+FAULT_TYPE_COUPLING = "COUPLING"

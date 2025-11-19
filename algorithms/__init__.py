@@ -1,5 +1,6 @@
 from .base_algorithm import BaseDetectionAlgorithm
 from .five_stage_detection_algorithm import FiveStageDetectionAlgorithm
+from .four_stage_detection_algorithm import FourStageDetectionAlgorithm
 from .majority_based_detector import MajorityBasedDetector
 from .parity_based_detector import ParityBasedDetector
 from .weighted_sum_detector import WeightedSumDetector

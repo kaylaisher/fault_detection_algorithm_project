@@ -3,15 +3,18 @@ from algorithms.five_stage_detection_algorithm import FiveStageDetectionAlgorith
 from algorithms.weighted_sum_detector import WeightedSumDetector
 from algorithms.parity_based_detector import ParityBasedDetector
 from algorithms.majority_based_detector import MajorityBasedDetector
+from algorithms.four_stage_detection_algorithm import FourStageDetectionAlgorithm
 
 if __name__ == "__main__":
     print("=== Fault Detection Simulation ===")
     bit_width = int(input("Enter weight bit width: "))
-    print("Algorithms: five_stage, weighted_sum, parity_based, majority_based")
+    print("Algorithms: five_stage, four_stage, weighted_sum, parity_based, majority_based")
     algo_name = input("Select algorithm: ").strip()
 
     if algo_name == "five_stage":
         algo = FiveStageDetectionAlgorithm(bit_width)
+    elif algo_name == "four_stage":
+        algo = FourStageDetectionAlgorithm(bit_width)
     elif algo_name == "weighted_sum":
         algo = WeightedSumDetector(bit_width)
     elif algo_name == "parity_based":
