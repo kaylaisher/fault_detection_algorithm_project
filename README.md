@@ -1,4 +1,4 @@
-### Fault detection algorithm evaluating tool project
+# Fault detection algorithm evaluating tool project
  - mimic hardware behavior
  - control input/weight patterns
  - track detected fault
